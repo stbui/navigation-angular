@@ -7,7 +7,7 @@ export default {
   type: 'mysql',
   adapter: {
     mysql: {
-      host: '127.0.0.1',
+      host: process.env.MYSQL_HOSTNAME || '127.0.0.1',
       port: '',
       database: 'navigation',
       user: 'root',

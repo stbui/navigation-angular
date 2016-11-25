@@ -59,25 +59,13 @@ dokcer run -d -p 3306:3306 --name nav-mysql -e MYSQL_ROOT_PASSWORD=root -v /data
 > 启动node容器
 
 ```
-docker run -d -p 8360:8360 --name node-navigation --link nav-mysql:mysql node
+docker run -d -p 8360:8360 --name node-navigation --link nav-mysql:mysql -e MYSQL_HOSTNAME=nav-mysql node
 ```
 
 > 导入数据
 
 * 通过工具连接到mysql,创建数据库名**navigation**，然后导入sql文件
-* 修改项目配置文件 **src/common/config/db.js**
 
-```javascript
-mysql: {
-      host: 'nav-mysql',
-      port: '',
-      database: 'navigation',
-      user: 'root',
-      password: 'root',
-      prefix: 'nav_',
-      encoding: 'utf8'
-}
-```
 
 > 恭喜你，可以访问了
 ```
