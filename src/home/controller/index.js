@@ -67,7 +67,7 @@ export default class extends Base {
 
         const folder = think.ROOT_PATH + '/back';
         const filename = 'favourite';
-        let path = path = folder + '/' + filename + '.json';
+        let path = folder + '/' + filename + '.json';
 
         let data = linksModel;
 

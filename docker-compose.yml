@@ -1,8 +1,10 @@
-mysql:
-	build:
-	port:
-	 - "3306:3306"
-	volume:
-	 - /data:/data
-	environment:
-	 MYSQL_ROOT_PASSWORD:root
+db:
+  hostname: nav_mysql
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=navigation
+  command: "mysql -uroot -proot < ./navigation.sql"
+  restart: always
+  ports:
+    - "3306:3306"

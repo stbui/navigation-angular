@@ -1,0 +1,68 @@
+<div ng-controller="linkCtl">
+
+<div class="bg-light lter b-b wrapper-md">
+    <span class="pull-right">已收藏网址：{{count}}条</span>
+    <h1 class="m-n font-thin h3">收藏列表</h1>
+</div>
+
+
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-lg-12 filter-wrapper">
+            <div class="filter hidden">
+                <h4>技能:</h4>
+                <div><a class="active" href="">全部</a>
+                    <a href="">前端</a>
+                    <a href="">后端</a>
+                    <a href="">设计</a>
+                    <a href="">产品</a>
+                    <a href="">运营</a>
+                </div>
+            </div>
+            <div class="filter">
+                <h4>专辑:</h4>
+                <div><a class="active" ng-click="getTopicList(0)" href="javascript:;">全部</a>
+                    <a ng-class="{active: topicId==topic.id}" ng-click="getTopicList(topic)" href="javascript:;" ng-repeat="topic in topics">{{topic.name}}</a>
+                </div>
+            </div>
+            <div class="filter">
+                <h4>标签:</h4>
+                <div><a class="active" ng-click="getLabelList(0)" href="javascript:;">全部</a>
+                    <a ng-class="{active: labelId == label.id}" ng-click="getLabelList(label)" href="javascript:;" ng-repeat="label in labels">{{label.catalog_name}}</a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12" ng-repeat="link in links">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2 link-icon hidden"></div>
+                        <div class="col-md-10">
+                            <h4 class="page-title"><a href="{{link.link}}" target="_blank">{{link.title}}</a></h4>
+                            <div class="page-small-title">{{link.description}}</div>
+                        </div>
+                        <div class="col-lg-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text-center">
+        <ul class="pagination pagination-md">
+            <li ng-class="{hidden: totalPages == 1}"><a ng-click="getLinkList(1)" href="javascript:;">首页</a></li>
+            <li ng-class="{active: currentPage ==page}" ng-repeat="page in pages"><a ng-click="getLinkList(page)" href="javascript:;">{{page}}</a></li>
+            <li ng-class="{hidden: totalPages == 1}"><a ng-click="getLinkList(totalPages)" href="javascript:;">尾页</a></li>
+        </ul>
+        <!--<stbui-pagination method="load"></stbui-pagination>-->
+    </div>
+</div>
+
+</div>

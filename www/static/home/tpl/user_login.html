@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h3 class="modal-title">用户登陆</h3>
+</div>
+<div class="modal-body">
+    <form class="bs-example form-horizontal ng-pristine ng-valid">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">邮箱</label>
+            <div class="col-lg-10">
+                <input type="email" class="form-control" placeholder="邮箱">
+                <span class="help-block m-b-none">{{error}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">密码</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" placeholder="密码">
+                <span class="help-block m-b-none">{{error}}</span>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <div class="checkbox">
+                    <label class="i-checks">
+                        <input type="checkbox" checked=""><i></i> 记住
+                    </label>
+                </div>
+            </div>
+        </div>-->
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button ng-click="login()" type="submit" class="btn btn-sm btn-primary">登陆</button>
+            </div>
+        </div>
+    </form>
+
+
+   <!-- <ul>
+        <li ng-repeat="item in items">
+            <a ng-click="selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b>-->
+</div>
+<!--<div class="modal-footer">-->
+    <!--<button class="btn btn-default" ng-click="cancel()">取消</button>-->
+    <!--<button class="btn btn-primary" ng-click="ok()">登陆</button>-->
+<!--</div>-->

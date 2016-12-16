@@ -1,0 +1,26 @@
+<div ng-controller="topicCtl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">关注列表</h1>
+    </div>
+
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-lg-3" ng-repeat="topic in topics">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <a href class="thumb pull-right m-l m-t-xs avatar">
+                            <img src="img/a4.jpg" alt="...">
+                            <i class="on md b-white bottom"></i>
+                        </a>
+                        <div class="clear">
+                            <a ui-sref="app.favorite(topic)" class="text-info block m-b-xs">{{topic.name}} <i class="icon-twitter"></i></a>
+                            <a href class="btn btn-addon btn-sm btn-info m-t-xs"><i class="fa fa-eye"></i> 关注</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,25 @@
+<div ng-controller="searchResultCtl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">搜索结果</h1>
+    </div>
+
+    <div class="wrapper-md">
+      <div class="row">
+          <div class="col-lg-12" ng-repeat="link in links">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div class="row">
+                          <div class="col-md-2 link-icon hidden"></div>
+                          <div class="col-md-10">
+                              <h4 class="page-title"><a href="{{link.link}}" target="_blank">{{link.title}}</a></h4>
+                              <div class="page-small-title">{{link.description}}</div>
+                          </div>
+                          <div class="col-lg-2"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+</div>
