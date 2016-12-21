@@ -330,8 +330,6 @@ app.controller('userLoginCtl', function ($rootScope,$scope, $modal, $localStorag
         $scope.isLogin = false;
     }
 
-
-    $scope.items = ['item1', 'item2', 'item3'];
     $scope.userLogin = function (size) {
         var modalInstance = $modal.open({
             templateUrl: 'userLogin.html',
@@ -339,7 +337,6 @@ app.controller('userLoginCtl', function ($rootScope,$scope, $modal, $localStorag
             size: size,
             resolve: {
                 items: function () {
-                    return $scope.items;
                 }
             }
         });
@@ -359,9 +356,9 @@ app.controller('userLoginCtl', function ($rootScope,$scope, $modal, $localStorag
 });
 
 app.controller('modalUserLoginCtl', function ($scope,$modalInstance, $localStorage, $log) {
-    // $scope.items = items;
 
     $scope.login = function () {
+
         $localStorage.userInfo = {
             username:'stbui',
             userid:1,

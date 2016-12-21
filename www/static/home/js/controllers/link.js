@@ -1,5 +1,4 @@
-app.controller('linkCtl', function ($scope, $http, $anchorScroll,$stateParams) {
-    // console.log($stateParams.id)
+app.controller('linkCtl', function ($scope, $http, $anchorScroll,$stateParams, $localStorage, $modal) {
 
     $http.get('/api/topic').then(function (response) {
         $scope.topics = response.data.data;
@@ -88,4 +87,59 @@ app.controller('linkCtl', function ($scope, $http, $anchorScroll,$stateParams) {
     }
 
     init();
+
+
+
+
+
+
+
+
+    // user
+
+    $scope.handleEdit = function (id) {
+        var userInfo = $localStorage.userInfo;
+
+        if(!angular.isDefined(userInfo)) {
+            return;
+        }
+
+        for(var i=0;i<$scope.links.length;i++) {
+            if($scope.links[i].id == id) {
+                $scope.items = $scope.links[i];
+            }
+        }
+
+        $modal.open({
+            templateUrl: 'link_edit.html',
+            controller: 'modalLinkEditCtl',
+            resolve: {
+                $items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+    }
+
+});
+
+app.controller('modalLinkEditCtl', function ($scope,$modalInstance, $localStorage, $log, $items) {
+    console.log($items)
+
+    $scope.web = {
+        id: $items.id,
+        name: $items.title,
+        domain: $items.link,
+        description: $items.description,
+        type: '',
+        github: $items.link_github,
+        sort: $items.sort_order,
+        publish: $items.status_is
+    }
+
+    $scope.edit = function () {
+        console.log($scope.web);
+        $modalInstance.dismiss('cancel');
+    }
 });
