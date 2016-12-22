@@ -1,4 +1,4 @@
-app.controller('linkCtl', function ($scope, $http, $anchorScroll,$stateParams, $localStorage, $modal) {
+app.controller('linkCtl', function ($scope, $http, $anchorScroll, $stateParams, $localStorage, $modal) {
 
     $http.get('/api/topic').then(function (response) {
         $scope.topics = response.data.data;
@@ -36,7 +36,7 @@ app.controller('linkCtl', function ($scope, $http, $anchorScroll,$stateParams, $
         $http.get(url).then(function (response) {
             var data = response.data;
 
-            if(!topicId) {
+            if (!topicId) {
                 $scope.count = response.data.count;
             }
 
@@ -89,57 +89,46 @@ app.controller('linkCtl', function ($scope, $http, $anchorScroll,$stateParams, $
     init();
 
 
-
-
-
-
-
-
     // user
 
     $scope.handleEdit = function (id) {
         var userInfo = $localStorage.userInfo;
 
-        if(!angular.isDefined(userInfo)) {
+        if (!angular.isDefined(userInfo)) {
             return;
         }
 
-        for(var i=0;i<$scope.links.length;i++) {
-            if($scope.links[i].id == id) {
+        for (var i = 0; i < $scope.links.length; i++) {
+            if ($scope.links[i].id == id) {
                 $scope.items = $scope.links[i];
             }
         }
 
-        $modal.open({
+        var modalInstance = $modal.open({
             templateUrl: 'link_edit.html',
             controller: 'modalLinkEditCtl',
             resolve: {
-                $items: function () {
+                $item: function () {
                     return $scope.items;
                 }
             }
+        });
+
+        modalInstance.result.then(function (item) {
+
+        }, function () {
+
         });
 
     }
 
 });
 
-app.controller('modalLinkEditCtl', function ($scope,$modalInstance, $localStorage, $log, $items) {
-    console.log($items)
-
-    $scope.web = {
-        id: $items.id,
-        name: $items.title,
-        domain: $items.link,
-        description: $items.description,
-        type: '',
-        github: $items.link_github,
-        sort: $items.sort_order,
-        publish: $items.status_is
-    }
+app.controller('modalLinkEditCtl', function ($scope, $modalInstance, $localStorage, $log, $item) {
+    $scope.web = $item;
 
     $scope.edit = function () {
-        console.log($scope.web);
-        $modalInstance.dismiss('cancel');
+        $modalInstance.close($scope.web);
+        // $modalInstance.dismiss('cancel');
     }
 });

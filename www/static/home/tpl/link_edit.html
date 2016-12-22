@@ -6,14 +6,14 @@
         <div class="form-group">
             <label class="col-lg-2 control-label">网址名称</label>
             <div class="col-lg-10">
-                <input type="input" ng-model="web.name" class="form-control" placeholder="网址名称">
+                <input type="input" ng-model="web.title" class="form-control" placeholder="网址名称">
                 <span class="help-block m-b-none">{{error}}</span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">访问域名</label>
             <div class="col-lg-10">
-                <input type="input" ng-model="web.domain" class="form-control" placeholder="访问域名">
+                <input type="input" ng-model="web.link" class="form-control" placeholder="访问域名">
                 <span class="help-block m-b-none">{{error}}</span>
             </div>
         </div>
@@ -34,21 +34,21 @@
         <div class="form-group">
             <label class="col-lg-2 control-label">github</label>
             <div class="col-lg-10">
-                <input type="input" ng-model="web.github" class="form-control" placeholder="github">
+                <input type="input" ng-model="web.link_github" class="form-control" placeholder="github">
                 <span class="help-block m-b-none">{{error}}</span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">显示顺序</label>
             <div class="col-lg-10">
-                <input type="number" ng-model="web.sort" class="form-control" placeholder="显示顺序">
+                <input type="number" ng-model="web.sort_order" class="form-control" placeholder="显示顺序">
                 <span class="help-block m-b-none">{{error}}</span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-2 control-label">是否公开</label>
             <div class="col-lg-10">
-                <input type="input" ng-model="web.publish" class="form-control" placeholder="是否公开">
+                <input type="input" ng-model="web.status_is" class="form-control" placeholder="是否公开">
                 <span class="help-block m-b-none">{{error}}</span>
             </div>
         </div>
