@@ -2,9 +2,10 @@
 
 <div class="bg-light lter b-b wrapper-md">
     <span class="pull-right">已收藏网址：{{count}}条</span>
-    <h1 class="m-n font-thin h3">收藏列表</h1>
+    <h1 class="m-n font-thin h3">收藏列表 <span class=""><button ng-click="addLink()" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> 添加链接</button></span></h1>
 </div>
 
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
 
 <div class="wrapper-md">
     <div class="row">

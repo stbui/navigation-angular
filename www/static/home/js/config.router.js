@@ -509,9 +509,14 @@ angular.module('app')
                         url: '/fav/:id',
                         templateUrl: 'tpl/app_favorite.html',
                         resolve: {
-                            deps: ['uiLoad', function (uiLoad) {
-                                return uiLoad.load(['js/controllers/link.js']);
-                            }]
+                            deps: ['$ocLazyLoad',
+                                function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load('toaster').then(
+                                        function () {
+                                            return $ocLazyLoad.load('js/controllers/link.js');
+                                        }
+                                    );
+                                }]
                         }
                     })
 

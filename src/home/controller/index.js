@@ -6,31 +6,33 @@ import fs from 'fs';
 export default class extends Base {
 
     async indexAction() {
-        let get = this.get();
-        let topic_id = get.id;
+        this.redirect('/static/home/index.html');
 
-        if (think.isEmpty(topic_id)) {
-            topic_id = 1;
-        }
-
-        const topicModel = this.model('topic').getList();
-        const catalogModel = this.model('catalog').findList({topic_id: topic_id});
-        const linksModel = this.model('links').findList({topic_id: topic_id});
-        const linksCount = await this.model('links').getCount();
-
-        this.assign({
-            topic: topicModel,
-            catalog: catalogModel,
-            links: linksModel,
-            count: {
-                link: linksCount,
-            },
-            update: think.datetime(),
-            message: this.cookie('message'),
-        });
-
-        this.cookie('message', null)
-        return this.display();
+        // let get = this.get();
+        // let topic_id = get.id;
+        //
+        // if (think.isEmpty(topic_id)) {
+        //     topic_id = 1;
+        // }
+        //
+        // const topicModel = this.model('topic').getList();
+        // const catalogModel = this.model('catalog').findList({topic_id: topic_id});
+        // const linksModel = this.model('links').findList({topic_id: topic_id});
+        // const linksCount = await this.model('links').getCount();
+        //
+        // this.assign({
+        //     topic: topicModel,
+        //     catalog: catalogModel,
+        //     links: linksModel,
+        //     count: {
+        //         link: linksCount,
+        //     },
+        //     update: think.datetime(),
+        //     message: this.cookie('message'),
+        // });
+        //
+        // this.cookie('message', null)
+        // return this.display();
     }
 
     async getlinksAction() {

@@ -1,4 +1,4 @@
-app.controller('linkCtl', function ($scope, $http, $anchorScroll, $stateParams, $localStorage, $modal) {
+app.controller('linkCtl', function ($scope, $http, $anchorScroll, $stateParams, $localStorage, $modal,toaster) {
 
     $http.get('/api/topic').then(function (response) {
         $scope.topics = response.data.data;
@@ -89,6 +89,55 @@ app.controller('linkCtl', function ($scope, $http, $anchorScroll, $stateParams, 
     init();
 
 
+    // add link
+
+    $scope.addLink = function () {
+        var modalInstance = $modal.open({
+            templateUrl: 'link_edit.html',
+            controller: 'modalLinkEditCtl',
+            resolve: {
+                $item: function () {
+                    return {
+                        title: '',
+                        link: '',
+                        link_github: '',
+                        description: '',
+                        image_link: '',
+                        sort_order: '',
+                        status_is: '',
+                        tag: '',
+                        topic_id: '',
+                        user_id: '',
+                    }
+                },
+                $type: function () {
+                    return {
+                        type: 'add',
+                        title: '添加'
+                    }
+                }
+            }
+        });
+
+        modalInstance.result.then(function (item) {
+            // 提交数据
+            // $http.get('/api/link/add').then(function () {
+            //
+            // });
+
+            $scope.toaster = {
+                type: 'success',
+                title: '操作成功',
+                text: '链接添加成功'
+            };
+
+            toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+        }, function () {
+        });
+    }
+
+
+
     // user
 
     $scope.handleEdit = function (id) {
@@ -110,25 +159,45 @@ app.controller('linkCtl', function ($scope, $http, $anchorScroll, $stateParams, 
             resolve: {
                 $item: function () {
                     return $scope.items;
+                },
+                $type: function () {
+                    return {
+                        type: 'edit',
+                        title: '修改'
+                    }
                 }
             }
         });
 
         modalInstance.result.then(function (item) {
+            $scope.toaster = {
+                type: 'success',
+                title: '操作成功',
+                text: '链接添加成功'
+            };
 
+            toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
         }, function () {
 
         });
-
     }
 
 });
 
-app.controller('modalLinkEditCtl', function ($scope, $modalInstance, $localStorage, $log, $item) {
-    $scope.web = $item;
+
+app.controller('modalLinkEditCtl', ['$scope', '$modalInstance', '$item', '$type', function ($scope, $modalInstance, $item, $type) {
+
+    if ($type.type == 'add') {
+        $scope.modalTitle = $type.title;
+        $scope.web = $item;
+    } else {
+        $scope.modalTitle = '修改';
+        $scope.web = $item;
+    }
+
 
     $scope.edit = function () {
         $modalInstance.close($scope.web);
         // $modalInstance.dismiss('cancel');
     }
-});
+}]);
