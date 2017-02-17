@@ -11,7 +11,3 @@
  * })
  * 
  */
-
-// import htmlCache from 'think-html-cache';
-
-// think.middleware('html_cache', htmlCache);
