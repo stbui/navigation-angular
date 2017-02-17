@@ -1,13 +1,10 @@
 [前端导航大全](back/favourite.md)
 ----------
 
-在线Demo
-```
-http://stbui.com
-```
+在线Demo：[http://stbui.com](http://stbui.com)
 
 ```bash
-git clone https://github.com/stbui/navigation.git
+git clone https://github.com/stbui/navigation-angular.git
 ```
 
 安装依赖并启动
@@ -41,7 +38,6 @@ npm run start
 > 前提依赖环境准备
 
 ```
- - docker pull node -
 docker pull mysql
 ```
 
@@ -82,8 +78,8 @@ create database navigation
 docker exec -d aae mysql -uroot -proot < ./navigation.sql
 ```
 
-
 > 恭喜你，可以访问了
+
 ```
 http://ip:8630
 ```
