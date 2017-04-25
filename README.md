@@ -71,11 +71,12 @@ docker exec -it aae /bin/bash
 ```
 在mysql容器中执行 *mysql* 命令创建数据库名为 **navigation**
 ```
+mysql -uroot -proot
 create database navigation
 ```
 然后退出mysql容器， 导入sql文件到容器中
 ```
-docker exec -d aae mysql -uroot -proot < ./navigation.sql
+docker exec -i aae mysql -uroot -proot navigation < ./navigation.sql
 ```
 
 > 恭喜你，可以访问了

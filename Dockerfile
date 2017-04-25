@@ -6,6 +6,10 @@ COPY package.json /navigation
 RUN npm install
 COPY . /navigation
 
-EXPOSE 8360
+RUN npm run compile
 
-CMD ["node", "www/development.js"]
+
+CMD ["node", "www/production.js"]
+#CMD ["npm","run","start"]
+
+EXPOSE 8360
